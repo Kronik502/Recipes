@@ -1,0 +1,31 @@
+/* Navbar container styling */
+.navbar {
+    background-color: #000000; /* Match your recipe item background */
+    padding: 10px 20px; /* Padding around the navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  }
+  
+  /* Navbar list styling */
+  .navbar-list {
+    list-style-type: none; /* Remove default list styling */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-around; /* Space items evenly */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  /* Navbar link styling */
+  .navbar-link {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding for links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  /* Hover effect for links */
+  .navbar-link:hover {
+    background-color: #ff031c; /* Change background on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+  }
+  
