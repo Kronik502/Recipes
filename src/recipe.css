@@ -1,0 +1,88 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background-color: #011518;
+    color: #ffffff;
+
+  }
+  
+  h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 2px;
+  }  
+  
+  /* Form Container */
+  div {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(231, 230, 230, 0.1);
+    border-radius: 8px ;
+    animation: fadeIn 0.5s ease-in-out;
+    background-color: #000000;
+
+
+  }
+  
+  /* Form Elements */
+  label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: -10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #ffffff;
+    outline: none;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #5752d0;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

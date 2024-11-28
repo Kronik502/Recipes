@@ -1,0 +1,159 @@
+/* Grid container for recipe items */
+.recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid columns */
+  gap: 16px; /* Spacing between grid items */
+  padding: 16px; /* Padding around the grid container */
+}
+
+/* Recipe item styling */
+.recipe-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-item:hover {
+  transform: scale(1.02); /* Slight scaling effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Image styling */
+.recipe-image {
+  width: 100%; /* Adjust as needed */
+  height: auto; /* Keep aspect ratio */
+  object-fit: cover; /* Make sure images fill the container without distortion */
+}
+
+/* Large image styling for expanded recipes */
+.large-image {
+  width: 100%;
+  height: auto;
+  transition: height 0.3s ease;
+}
+
+/* Show more button styling */
+.show-more-button, .show-less-button {
+  margin-top: 10px;
+  background-color: #000000; /* Default background color */
+  color: white; /* Text color */
+  border: none;
+  padding: 10px 15px; /* Adjust padding */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.show-more-button:hover, .show-less-button:hover {
+  background-color: #444; /* Darker hover effect for both buttons */
+}
+
+/* Show less button specific styling */
+.show-less-button {
+  background-color: #444; /* Darker background when showing less */
+}
+
+/* Recipe details styling */
+.recipe-details {
+  padding: 10px;
+}
+
+/* Delete button styling */
+.Deleteb {
+  background-color: #000000; /* Default background color */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.Deleteb:hover {
+  background-color: #ff031c; /* Red background on hover */
+}
+
+/* Add button styling */
+.add-button {
+  margin-left: 50px;
+  font-size: 18px;
+  border-radius: 2px;
+  background-color: #000000;
+  color: white;
+  padding: 5px;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.add-button:hover {
+  background-color: #444; /* Darken the add button background on hover */
+}
+
+/* Search input styling */
+.search {
+  margin-left: 20px;
+  width: 180px;
+  padding: 5px;
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Links styling */
+.links {
+  border: 2px solid #000000; /* Border color and thickness */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Padding around the text */
+  color: #007bff; /* Text color */
+  text-decoration: none; /* Remove underline */
+  font-size: 0.9em; /* Font size */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.links:hover {
+  background-color: #000000; /* Background color on hover */
+  color: rgb(255, 255, 255); /* Text color on hover */
+}
+
+/* Responsive adjustments for tablets and below */
+@media (max-width: 768px) {
+  .recipe-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust for smaller screens */
+    gap: 12px; /* Adjust gap for smaller screens */
+  }
+
+  .search {
+    width: 150px; /* Reduce search width on smaller screens */
+  }
+
+  .title {
+    font-size: 24px; /* Scale down title size on smaller screens */
+  }
+
+  .add-button {
+    margin-left: 20px; /* Adjust margin for smaller screens */
+  }
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 480px) {
+  .recipe-container {
+    grid-template-columns: 1fr; /* Stack recipe items vertically on very small screens */
+  }
+
+  .add-button {
+    width: 100%; /* Make the add button span the full width */
+    text-align: center;
+  }
+}
