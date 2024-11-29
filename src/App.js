@@ -6,29 +6,32 @@ import RegistrationPage from './register';
 import HomePage from './home';
 import RecipeForm from './recipeform';
 import Navbar from './navbar'; // Import Navbar
+import { UserProvider } from './UserContext'; // Import the context provider
 
 function App() {
   return (
-    <Router>
-      <Navbar /> {/* Add Navbar here */}
-      <Routes>
-        {/* Login Route */}
-        <Route path="/login" element={<LoginPage />} />
+    <UserProvider>
+      <Router>
+        <Navbar /> {/* Add Navbar here to be visible across all routes */}
+        <Routes>
+          {/* Login Route */}
+          <Route path="/login" element={<LoginPage />} />
 
-        {/* Register Route */}
-        <Route path="/register" element={<RegistrationPage />} />
+          {/* Register Route */}
+          <Route path="/register" element={<RegistrationPage />} />
 
-        {/* Recipe Form Route for adding and editing recipes */}
-        <Route path="/add-recipe" element={<RecipeForm />} />
-        <Route path="/recipes/:id" element={<RecipeForm />} />
+          {/* Recipe Form Route for adding and editing recipes */}
+          <Route path="/add-recipe" element={<RecipeForm />} />
+          <Route path="/recipes/:id" element={<RecipeForm />} /> {/* View or edit a specific recipe */}
 
-        <Route path="/edit-recipe/:id" element={<RecipeForm />} /> {/* Editing a recipe */}
+          <Route path="/edit-recipe/:id" element={<RecipeForm />} /> {/* Editing a recipe */}
 
-        {/* Home Route */}
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/" element={<HomePage />} /> {/* Default to Home or Login page */}
-      </Routes>
-    </Router>
+          {/* Home Route */}
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} /> {/* Default to Home or Login page */}
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 

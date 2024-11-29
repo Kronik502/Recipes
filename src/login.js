@@ -1,63 +1,78 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-function LoginPage() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/login', { username, password });
-      
-      if (response.data.username) {
-        // Store the username in localStorage on successful login
-        localStorage.setItem('username', username);
 
-        // Navigate to home page after successful login
-        navigate('/home');
-      } else {
-        setError('Login failed, please try again.');
-      }
+    // Basic validation
+    if (!username || !password) {
+      setErrorMessage('Username and password are required');
+      return;
+    }
+
+    setLoading(true);
+    setErrorMessage(''); // Reset any previous error
+
+    try {
+      // Send login credentials to backend
+      const response = await axios.post('http://localhost:5000/api/login', { username, password }, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      // Assuming the backend returns a token and username
+      const { token, username: loggedInUser } = response.data;
+
+      // Store the token and username in localStorage
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', loggedInUser);
+
+      // Redirect to homepage after successful login
+      navigate('/home', { state: { username: loggedInUser } });
     } catch (err) {
-      if (err.response && err.response.status === 400) {
-        setError('Invalid username or password');
+      if (err.response && err.response.data) {
+        setErrorMessage(err.response.data.message || 'Login failed');
       } else {
-        setError('An error occurred. Please try again later.');
+        setErrorMessage('Unexpected error. Please try again later.');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
+
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </div>
   );
-}
+};
 
-export default LoginPage;
+export default Login;
