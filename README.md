@@ -25,6 +25,8 @@ This app is built using **React** for the frontend and **Node.js/Express** for t
 
 ### Setting Up the Backend
 1. Clone the repository:
-   ```bash
+
    git clone https://github.com/Kronik502/Recipes.git
    cd recipe-app
+
+   ![Recipe-App](https://github.com/user-attachments/assets/6a13fe84-543f-471d-aa93-7374baf22a5c)
